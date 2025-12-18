@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English Review System – Poster + Quiz</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:linear-gradient(135deg,#1e3c72,#2a5298);
+  min-height:100vh;
+  padding:20px;
+}
+.poster{
+  max-width:1100px;
+  margin:auto;
+  background:#fff;
+  border-radius:22px;
+  padding:35px;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+}
+
+h1{text-align:center;color:#1e3c72;margin-bottom:6px}
+.subtitle{text-align:center;color:#555;margin-bottom:25px}
+
+.topbar{text-align:center;margin-bottom:30px}
+.btn{
+  background:#1e3c72;color:#fff;
+  border:none;padding:10px 18px;
+  border-radius:10px;
+  cursor:pointer;margin:4px;
+  font-size:14px
+}
+.btn:hover{background:#16305a}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:20px;
+}
+.card{
+  background:#f5f7fa;
+  border-radius:18px;
+  padding:22px;
+  border-left:6px solid #1e3c72;
+}
+.card h2{color:#1e3c72;margin-top:0}
+
+/* QUIZ */
+.quiz{
+  margin-top:45px;
+  padding-top:30px;
+  border-top:3px dashed #ccc;
+}
+.quiz h2{text-align:center;color:#1e3c72}
+
+.question{
+  background:#f9fafc;
+  border-radius:16px;
+  padding:20px;
+  margin:20px 0;
+  border-left:6px solid #1e3c72;
+}
+
+.question-title{
+  font-weight:bold;
+  margin-bottom:12px;
+}
+
+.options{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:12px;
+}
+
+.option{
+  border:2px solid #ccc;
+  border-radius:12px;
+  padding:12px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  transition:.2s;
+  background:#fff;
+}
+
+.option input{display:none}
+
+.option:hover{
+  border-color:#1e3c72;
+  background:#eef3ff;
+}
+
+.option.selected{
+  border-color:#1e3c72;
+  background:#dfe9ff;
+  font-weight:bold;
+}
+
+.option.correct{
+  border-color:#2ecc71;
+  background:#eafaf1;
+}
+
+.option.wrong{
+  border-color:#e74c3c;
+  background:#fdecea;
+}
+
+.progress{
+  height:12px;
+  background:#ddd;
+  border-radius:10px;
+  overflow:hidden;
+  margin:25px 0;
+}
+.progress div{
+  height:100%;
+  width:0%;
+  background:#1e3c72;
+  transition:.4s;
+}
+
+.result{
+  text-align:center;
+  font-size:18px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+.footer{
+  margin-top:35px;
+  padding-top:20px;
+  border-top:1px solid #ddd;
+  text-align:center;
+  font-size:14px;
+  color:#444;
+}
+
+@media print{
+  .topbar{display:none}
+}
+</style>
+</head>
+
+<body>
+<div class="poster">
+
+<h1>English Review System</h1>
+<div class="subtitle">Useful Vocabulary for Pitch + Interactive Quiz</div>
+
+<div class="topbar">
+  <button class="btn" onclick="window.print()">Download as PDF</button>
+  <button class="btn" onclick="location.href='index.html'">Menu</button>
+</div>
+
+<!-- POSTER -->
+<div class="grid">
+  <div class="card">
+    <h2>🎤 Introduction</h2>
+    <p>• This is my English review system.</p>
+    <p>• It helps beginner students learn English.</p>
+  </div>
+  <div class="card">
+    <h2>❗ Problem</h2>
+    <p>• English is difficult for many students.</p>
+    <p>• Grammar can be confusing.</p>
+  </div>
+  <div class="card">
+    <h2>💡 Solution</h2>
+    <p>• Simple explanations.</p>
+    <p>• Easy practice activities.</p>
+  </div>
+  <div class="card">
+    <h2>✅ Benefits</h2>
+    <p>• Easy to use.</p>
+    <p>• Clear and practical.</p>
+  </div>
+</div>
+
+<!-- QUIZ -->
+<div class="quiz">
+  <h2>Quick English Quiz</h2>
+
+  <div class="progress"><div id="bar"></div></div>
+  <div id="questions"></div>
+
+  <div style="text-align:center">
+    <button class="btn" onclick="checkQuiz()">Check Answers</button>
+  </div>
+
+  <div class="result" id="result"></div>
+</div>
+
+<div class="footer">
+  Student: Ricardo Lacerda Pereira • ADS • English Portfolio
+</div>
+
+</div>
+
+<script>
+const quiz = [
+  { q:"The movie is very ____.",
+    a:["bored","boring","interest","excited"], c:1 },
+
+  { q:"I am ____ in English.",
+    a:["interesting","interest","interested","boring"], c:2 },
+
+  { q:"Yesterday, I ____ to work.",
+    a:["go","gone","went","going"], c:2 },
+
+  { q:"I ____ breakfast yesterday.",
+    a:["have","had","eat","eaten"], c:1 },
+
+  { q:"I ____ English yesterday.",
+    a:["study","studied","studies","studying"], c:1 },
+
+  { q:"The class is ____.",
+    a:["interested","interesting","interest","bored"], c:1 },
+
+  { q:"I am ____ because the class is long.",
+    a:["boring","bored","interest","exciting"], c:1 },
+
+  { q:"Yesterday, I ____ TV.",
+    a:["watch","watched","watching","watches"], c:1 },
+
+  { q:"English ____ important.",
+    a:["are","be","is","was"], c:2 },
+
+  { q:"I ____ to bed early yesterday.",
+    a:["go","goes","went","going"], c:2 }
+];
+
+const container=document.getElementById("questions");
+
+quiz.forEach((q,i)=>{
+  const div=document.createElement("div");
+  div.className="question";
+  div.innerHTML=`
+    <div class="question-title">${i+1}) ${q.q}</div>
+    <div class="options">
+      ${q.a.map((o,j)=>`
+        <label class="option">
+          <input type="radio" name="q${i}" value="${j}">
+          ${o}
+        </label>`).join("")}
+    </div>
+  `;
+  container.appendChild(div);
+
+  div.querySelectorAll(".option").forEach(opt=>{
+    opt.addEventListener("click",()=>{
+      div.querySelectorAll(".option").forEach(o=>o.classList.remove("selected"));
+      opt.classList.add("selected");
+      opt.querySelector("input").checked=true;
+    });
+  });
+});
+
+function checkQuiz(){
+  let score=0;
+  quiz.forEach((q,i)=>{
+    const opts=document.querySelectorAll(`input[name="q${i}"]`);
+    opts.forEach((o,idx)=>{
+      const label=o.parentElement;
+      label.classList.remove("correct","wrong");
+      if(o.checked){
+        if(idx===q.c){
+          label.classList.add("correct");
+          score++;
+        }else{
+          label.classList.add("wrong");
+        }
+      }
+    });
+  });
+  document.getElementById("bar").style.width=(score*10)+"%";
+  document.getElementById("result").innerText=`Score: ${score}/10`;
+}
+</script>
+
+</body>
+</html>

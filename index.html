@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>English Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  font-family:Arial, Helvetica, sans-serif;
+  background:linear-gradient(180deg,#1e3c72,#2a5298);
+  min-height:100vh;
+}
+
+/* TOP BAR */
+.top-bar{
+  background:linear-gradient(180deg,#234a84,#1e3c72);
+  padding:15px;
+  text-align:center;
+}
+
+.top-bar button{
+  background:linear-gradient(135deg,#4facfe,#00f2fe);
+  color:#003366;
+  border:none;
+  padding:8px 18px;
+  border-radius:20px;
+  cursor:pointer;
+  font-size:14px;
+  font-weight:bold;
+}
+
+/* HEADER */
+.header{
+  background:#fff;
+  text-align:center;
+  padding:45px 20px;
+}
+
+.header h1{
+  margin:0;
+  color:#1e3c72;
+  font-size:38px;
+}
+
+.header p{
+  margin-top:12px;
+  color:#555;
+  font-size:18px;
+}
+
+/* CONTENT */
+.container{
+  max-width:1100px;
+  margin:50px auto;
+  padding:0 20px;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:30px;
+}
+
+/* CARD BASE */
+.card{
+  background:#fff;
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 20px 40px rgba(0,0,0,.25);
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-6px);
+}
+
+/* CARD COLORS */
+.card.intro{border-top:6px solid #4facfe}
+.card.recn{border-top:6px solid #f39c12}
+.card.past{border-top:6px solid #9b59b6}
+.card.inged{border-top:6px solid #2ecc71}
+.card.poster{border-top:6px solid #e74c3c}
+.card.video{border-top:6px solid #1abc9c}
+
+.card h2{
+  margin-top:0;
+  color:#1e3c72;
+}
+
+.card p{
+  color:#333;
+  font-size:16px;
+}
+
+/* BUTTON */
+.card a{
+  margin-top:20px;
+  background:linear-gradient(135deg,#1e3c72,#2a5298);
+  color:#fff;
+  text-decoration:none;
+  text-align:center;
+  padding:12px;
+  border-radius:12px;
+  font-size:15px;
+  font-weight:bold;
+}
+
+.card a:hover{
+  opacity:.9;
+}
+
+/* FOOTER */
+footer{
+  margin-top:60px;
+  padding:25px;
+  text-align:center;
+  color:#fff;
+  font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="top-bar">
+  <button onclick="toggleLang()">Translate to Portuguese</button>
+</div>
+
+<!-- HEADER -->
+<div class="header">
+  <h1 data-en="English Portfolio" data-pt="Portfólio de Inglês">
+    English Portfolio
+  </h1>
+
+  <p data-en="Analysis and Systems Development Course – ADS"
+     data-pt="Curso de Análise e Desenvolvimento de Sistemas – ADS">
+    Analysis and Systems Development Course – ADS
+  </p>
+</div>
+
+<!-- CONTENT -->
+<div class="container">
+  <div class="cards">
+
+    <div class="card intro">
+      <h2 data-en="1️⃣ Introduction" data-pt="1️⃣ Introdução">1️⃣ Introduction</h2>
+      <p data-en="Presentation of the academic portfolio, objective and course context."
+         data-pt="Apresentação do portfólio acadêmico, objetivo e contexto da disciplina.">
+         Presentation of the academic portfolio, objective and course context.
+      </p>
+      <a href="introducao.html" data-en="Open" data-pt="Acessar">Open</a>
+    </div>
+
+    <div class="card recn">
+      <h2>2️⃣ Rec’n’Play</h2>
+      <p data-en="Text about the experience at the event and its importance for the ADS course."
+         data-pt="Texto sobre a experiência no evento e sua importância para o curso de ADS.">
+         Text about the experience at the event and its importance for the ADS course.
+      </p>
+      <a href="recnplay.html" data-en="Open" data-pt="Acessar">Open</a>
+    </div>
+
+    <div class="card past">
+      <h2>3️⃣ Past Simple</h2>
+      <p data-en="Handwritten text describing the previous day using Past Simple."
+         data-pt="Texto manuscrito descrevendo o dia anterior usando o Past Simple.">
+         Handwritten text describing the previous day using Past Simple.
+      </p>
+      <a href="past-simple.html" data-en="Open" data-pt="Acessar">Open</a>
+    </div>
+
+    <div class="card inged">
+      <h2>4️⃣ Adjectives ING & ED</h2>
+      <p data-en="Explanatory slide teaching the use of adjectives ending in ING and ED."
+         data-pt="Slide explicativo ensinando o uso de adjetivos terminados em ING e ED.">
+         Explanatory slide teaching the use of adjectives ending in ING and ED.
+      </p>
+      <a href="slide-ing-ed.html" data-en="Open" data-pt="Acessar">Open</a>
+    </div>
+
+    <div class="card poster">
+      <h2>5️⃣ Pitch Poster</h2>
+      <p data-en="Poster with useful vocabulary for presenting the English system."
+         data-pt="Pôster com vocabulário útil para apresentação do sistema de inglês.">
+         Poster with useful vocabulary for presenting the English system.
+      </p>
+      <a href="poster-pitch.html" data-en="Open" data-pt="Acessar">Open</a>
+    </div>
+
+    <div class="card video">
+      <h2>6️⃣ Pitch Video</h2>
+      <p data-en="Video presenting the English review system."
+         data-pt="Vídeo apresentando o sistema de revisão de inglês.">
+         Video presenting the English review system.
+      </p>
+      <a href="pitch-video.html" data-en="Insert video link" data-pt="Inserir link do vídeo">
+        Insert video link
+      </a>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  Ricardo Lacerda Pereira • ADS • English Portfolio
+</footer>
+
+<script>
+let lang = "en";
+
+function toggleLang(){
+  document.querySelectorAll("[data-en]").forEach(el=>{
+    el.innerText = (lang === "en") ? el.dataset.pt : el.dataset.en;
+  });
+
+  const btn = document.querySelector(".top-bar button");
+  btn.innerText = (lang === "en")
+    ? "Translate to English"
+    : "Translate to Portuguese";
+
+  lang = (lang === "en") ? "pt" : "en";
+}
+</script>
+
+</body>
+</html>
