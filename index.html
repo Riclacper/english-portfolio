@@ -128,7 +128,7 @@ footer{
 
 <!-- TOP BAR -->
 <div class="top-bar">
-  <button onclick="toggleLang()">Translate to Portuguese</button>
+    <button onclick="toggleLang()">PT ↔ EN</button>
 </div>
 
 <!-- HEADER -->
@@ -215,12 +215,6 @@ function toggleLang(){
   document.querySelectorAll("[data-en]").forEach(el=>{
     el.innerText = (lang === "en") ? el.dataset.pt : el.dataset.en;
   });
-
-  const btn = document.querySelector(".top-bar button");
-  btn.innerText = (lang === "en")
-    ? "Translate to English"
-    : "Translate to Portuguese";
-
   lang = (lang === "en") ? "pt" : "en";
 }
 </script>
